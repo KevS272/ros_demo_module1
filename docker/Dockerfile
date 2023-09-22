@@ -36,11 +36,12 @@ RUN apt-get update && apt-get install -y \
 # Source setup.bash of ROS2 humble
 RUN echo "source /opt/ros/humble/setup.bash" >> /root/.bashrc
 
-RUN rosdep update && \
-    rosdep install
+# RUN rosdep update && \
+#     rosdep install
 
 # Copy the ros_entrypoint.sh script from ros:ros-base
 COPY ros_entrypoint.sh /
+RUN chmod +x /ros_entrypoint.sh
 
 # Set the ros_entrypoint.sh script as the entry point
 ENTRYPOINT ["/ros_entrypoint.sh"]
