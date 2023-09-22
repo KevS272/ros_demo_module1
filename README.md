@@ -3,7 +3,7 @@ A demo module that includes two ROS 2 packages (listener/talker). It supports fu
 
 ## Requirements
 - Docker Engine
-- Docker Compose plugin
+- Docker Compose plugin (WARNING: for some weird reasons, there are different versions, resulting in "docker compose" and "docker-compose" commands. Both is fine, just check that you use the right command depending on your Docker compose installation!)
 
 ## Setup
 ### 1. Clone the repository
