@@ -23,6 +23,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     nano \
     curl \
     wget \
+    ros-$ROS_DISTRO-foxglove-bridge \
     && rm -rf /var/lib/apt/lists/*
 
 # install software required to run graphical applications
@@ -35,7 +36,14 @@ RUN apt-get update && apt-get install -y \
 # Source setup.bash of ROS2 humble
 RUN echo "source /opt/ros/humble/setup.bash" >> /root/.bashrc
 
-RUN rosdep update
+RUN rosdep update && \
+    rosdep install
+
+# Copy the ros_entrypoint.sh script from ros:ros-base
+COPY ros_entrypoint.sh /
+
+# Set the ros_entrypoint.sh script as the entry point
+ENTRYPOINT ["/ros_entrypoint.sh"]
 
 # Create a new workspace folder for ROS2
 RUN mkdir -p /root/ros2_ws/src
