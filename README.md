@@ -22,4 +22,4 @@ If you want to run the container detached, add the `-d` flag to the compose comm
 ```bash
 sudo docker compose up -d
 ```
-
+If you do this, you will have to `sudo docker compose stop` to stop the container or `sudo docker compose down` to completely remove it.
